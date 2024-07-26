@@ -1,1 +1,75 @@
-/*# sourceMappingURL=booklist.css.map */
+:root {
+  --primary-color: rgb(50, 143, 249);
+  --secondary-color: rgb(72, 191, 255);
+}
+
+.container {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.container h1 {
+  font-size: calc(15px + 3vw);
+  font-weight: normal;
+  text-align: center;
+  margin-bottom: calc(10px + 1.5vw);
+}
+.container h1 i {
+  color: var(--secondary-color);
+  margin-right: 10px;
+}
+.container h1 span {
+  color: var(--secondary-color);
+}
+.container-inputs {
+  display: flex;
+  flex-direction: column;
+}
+.container-inputs .form-content {
+  display: flex;
+  flex-direction: column;
+}
+.container-inputs label {
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+.container-inputs input {
+  margin-bottom: 15px;
+  border: 1px solid rgb(180, 180, 180);
+  outline: none;
+  height: 40px;
+}
+.container #addBook {
+  background-color: var(--secondary-color);
+  border: none;
+  outline: none;
+  width: 110px;
+  height: 60px;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+}
+.container #addBook:hover {
+  color: var(--primary-color);
+  background-color: black;
+  transition: 0.3s ease-in-out;
+}
+.container-books {
+  margin-top: calc(15px + 2vw);
+}
+.container-books .top-row {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid black;
+}
+.container-books .content {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 20px;
+}/*# sourceMappingURL=booklist.css.map */

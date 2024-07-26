@@ -1,1 +1,87 @@
-@import "mixins";
+:root {
+  --primary-color: rgb(50, 143, 249);
+  --secondary-color: rgb(72, 191, 255);
+}
+
+.container {
+  margin-left: 10px;
+  margin-right: 10px;
+
+  h1 {
+    font-size: calc(15px + 3vw);
+    font-weight: normal;
+    text-align: center;
+    margin-bottom: calc(10px + 1.5vw);
+
+    i {
+      color: var(--secondary-color);
+      margin-right: 10px;
+    }
+
+    span {
+      color: var(--secondary-color);
+    }
+  }
+
+  &-inputs {
+    display: flex;
+    flex-direction: column;
+
+    .form-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+
+    input {
+      margin-bottom: 15px;
+      border: 1px solid rgb(180, 180, 180);
+      outline: none;
+      height: 40px;
+    }
+  }
+
+  #addBook {
+    background-color: var(--secondary-color);
+    border: none;
+    outline: none;
+    width: 110px;
+    height: 60px;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+  }
+
+  #addBook:hover {
+    color: var(--primary-color);
+    background-color: black;
+    transition: 0.3s ease-in-out;
+  }
+
+  &-books {
+    margin-top: calc(15px + 2vw);
+
+    .top-row {
+      display: flex;
+      justify-content: space-between;
+      margin-left: 10px;
+      margin-right: 10px;
+      font-weight: bold;
+      font-size: 20px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid black;
+    }
+
+    .content {
+      display: flex;
+      justify-content: space-between;
+      margin-left: 10px;
+      margin-right: 10px;
+      font-size: 20px;
+    }
+  }
+}
