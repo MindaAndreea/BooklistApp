@@ -3,6 +3,11 @@
   --secondary-color: rgb(72, 191, 255);
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .container {
   margin-left: 10px;
   margin-right: 10px;
@@ -42,6 +47,9 @@
       border: 1px solid rgb(180, 180, 180);
       outline: none;
       height: 40px;
+      font-size: 15px;
+      letter-spacing: 1px;
+      padding: 5px;
     }
   }
 
@@ -76,12 +84,37 @@
       border-bottom: 1px solid black;
     }
 
-    .content {
-      display: flex;
-      justify-content: space-between;
+    &-content {
       margin-left: 10px;
       margin-right: 10px;
       font-size: 20px;
+
+      .content-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-bottom: 0.1px solid gray;
+      }
+
+      .content-row:nth-child(odd) {
+        background-color: rgb(194, 194, 194);
+      }
+
+      .delete-button {
+        color: red;
+        font-size: 20px;
+      }
+
+      .delete-button:hover {
+        color: white;
+        background-color: red;
+        padding: 10px;
+        border-radius: 5px;
+        transition: 0.5s ease-in-out;
+      }
     }
   }
 }
