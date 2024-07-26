@@ -6,23 +6,42 @@ class Book {
   }
 }
 
+// LOCAL STORAGE
+
+class Store {
+  static getBooks() {
+    let books;
+
+    if (localStorage.getItem("books") === null) {
+      books = [];
+    } else {
+      books = JSON.parse(localStorage.getItem("books"));
+    }
+
+    return books;
+  }
+
+  static addBooks(book) {
+    const books = Store.getBooks();
+    books.push(book);
+    localStorage("books", JSON.stringify(books));
+  }
+
+  static removeBook(isbn) {
+    const books = Store.getBooks();
+    books.forEach((book, index) => {
+      if (book.isbn == isbn) {
+        books.splice(index, 1);
+      }
+    });
+
+    localStorage.setItem("books", JSON.stringify(books));
+  }
+}
+
 class UI {
   static displayBooks() {
-    const StoredBooks = [
-      {
-        title: "Book 1",
-        author: "Author 1",
-        isbn: "12345",
-      },
-      {
-        title: "Book 2",
-        author: "Author 2",
-        isbn: "2234588",
-      },
-    ];
-
-    const books = StoredBooks;
-
+    const books = Store.getBooks();
     books.forEach((book) => UI.addBookToList(book));
   }
 
@@ -46,6 +65,17 @@ class UI {
     }
   }
 
+  static showAlerts(message, className) {
+    const div = document.createElement("div");
+    const container = document.querySelector(".container");
+    const form = document.querySelector(".book-form");
+
+    div.className = `alert alert-${className}`;
+    div.appendChild(document.createTextNode(message));
+    container.insertBefore(div, form);
+    setTimeout(() => document.querySelector(".alert").remove(), 1500);
+  }
+
   static clearFields() {
     document.querySelector("#title").value = "";
     document.querySelector("#author").value = "";
@@ -62,14 +92,24 @@ document.querySelector(".book-form").addEventListener("submit", (event) => {
   const author = document.querySelector("#author").value;
   const isbn = document.querySelector("#isbn").value;
 
-  const book = new Book(title, author, isbn);
+  if (title === "" || author === "" || isbn === "") {
+    UI.showAlerts("Please fill in the fields!", "danger");
+  } else {
+    const book = new Book(title, author, isbn);
 
-  UI.addBookToList(book);
-  UI.clearFields();
+    UI.showAlerts("You added the book!", "success");
+    UI.addBookToList(book);
+
+    Store.addBooks(book);
+
+    UI.clearFields();
+  }
 });
 
 document
   .querySelector(".container-books-content")
   .addEventListener("click", (event) => {
     UI.deleteBook(event.target);
+    UI.removeBook();
+    UI.showAlerts("You removed the book!", "removed");
   });

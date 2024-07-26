@@ -12,6 +12,29 @@ a {
   margin-left: 10px;
   margin-right: 10px;
 }
+.container .alert {
+  width: 100%;
+  height: 50px;
+  font-size: 35px;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.container .alert-success {
+  background-color: darkgreen;
+  color: lightgreen;
+}
+.container .alert-danger {
+  background-color: darkred;
+  color: rgb(255, 68, 68);
+}
+.container .alert-removed {
+  background-color: rgb(2, 142, 142);
+  color: rgb(0, 255, 255);
+}
 .container h1 {
   font-size: calc(15px + 3vw);
   font-weight: normal;
@@ -100,5 +123,5 @@ a {
   background-color: red;
   padding: 10px;
   border-radius: 5px;
-  transition: 0.5s ease-in-out;
+  transition: 0.3s ease-in-out;
 }/*# sourceMappingURL=booklist.css.map */
