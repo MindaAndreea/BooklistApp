@@ -24,7 +24,7 @@ class Store {
   static addBooks(book) {
     const books = Store.getBooks();
     books.push(book);
-    localStorage("books", JSON.stringify(books));
+    localStorage.setItem("books", JSON.stringify(books));
   }
 
   static removeBook(isbn) {
@@ -109,7 +109,13 @@ document.querySelector(".book-form").addEventListener("submit", (event) => {
 document
   .querySelector(".container-books-content")
   .addEventListener("click", (event) => {
-    UI.deleteBook(event.target);
-    UI.removeBook();
-    UI.showAlerts("You removed the book!", "removed");
+    if (event.target.parentElement.classList.contains("delete-button")) {
+      UI.deleteBook(event.target.parentElement);
+
+      const isbn =
+        event.target.parentElement.previousElementSibling.textContent;
+      Store.removeBook(isbn);
+
+      UI.showAlerts("You removed the book!", "removed");
+    }
   });
